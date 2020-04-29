@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="genesysrobot">
+	<xacro:property name="body_len" value="0.4" />
+	<xacro:property name="body_width" value="0.2" />
+	<xacro:property name="body_height" value="0.05" />
+	<!-- <xacro:property name="pi" value="3.1415" /> -->
+    
+	<link name="base_link">
+        <visual>
+            <geometry>
+                <box size="${body_len} ${body_width} ${body_height}" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </visual>
+        <inertial>
+            <mass value="10" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </link>
+
+	<!-- Legs -->
+	<xacro:include filename="$(find genesys)/urdf/leg.urdf.xacro"/>
+	<xacro:leg_macro leg_name="LF_" originxyz="${body_len/2} ${body_width/2} ${-body_height/2}" originrpy="${pi/2} 0 0"/>
+	<xacro:leg_macro leg_name="RF_" originxyz="${body_len/2} ${-body_width/2} ${-body_height/2}" originrpy="${pi/2} 0 0"/>
+	<xacro:leg_macro leg_name="LH_" originxyz="${-body_len/2} ${body_width/2} ${-body_height/2}" originrpy="${pi/2} 0 0"/>
+	<xacro:leg_macro leg_name="RH_" originxyz="${-body_len/2} ${-body_width/2} ${-body_height/2}" originrpy="${pi/2} 0 0"/>
+</robot>
+
+
