@@ -1,0 +1,73 @@
+
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers ---------------------------------------
+  BLLFT_controller:
+    type: effort_controllers/JointPositionController
+    joint: BLLFT
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  LFTLFC_controller:
+    type: effort_controllers/JointPositionController
+    joint: LFTLFC
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  BLLHT_controller:
+    type: effort_controllers/JointPositionController
+    joint: BLLHT
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  LHTLHC_controller:
+    type: effort_controllers/JointPositionController
+    joint: LHTLHC
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  BLRFT_controller:
+    type: effort_controllers/JointPositionController
+    joint: BLRFT
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  RFTRFC_controller:
+    type: effort_controllers/JointPositionController
+    joint: RFTRFC
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  BLRHT_controller:
+    type: effort_controllers/JointPositionController
+    joint: BLRHT
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  RHTRHC_controller:
+    type: effort_controllers/JointPositionController
+    joint: RHTRHC
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  gazebo_ros_control:
+    pid_gains:
+      BLLFT: 
+        p: 100.0
+        i: 1.0
+        d: 10.0
+      LFTLFC: 
+        p: 100.0
+        i: 1.0
+        d: 10.0
+      BLLHT: 
+        p: 100.0
+        i: 1.0
+        d: 10.0
+      LHTLHC: 
+        p: 100.0
+        i: 1.0
+        d: 10.0
+      BLRFT: 
+        p: 100.0
+        i: 1.0
+        d: 10.0
+      RFTRFC: 
+        p: 100.0
+        i: 1.0
+        d: 10.0
+      BLRHT: 
+        p: 100.0
+        i: 1.0
+        d: 10.0
+      RHTRHC: 
+        p: 100.0
+        i: 1.0
+        d: 10.0

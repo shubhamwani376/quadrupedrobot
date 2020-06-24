@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<launch>
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+ <!--<node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />-->
+<param name="robot_description" textfile="$(find urdfgenesyssw)/urdf/urdfgenesyssw.urdf"/>
+  <node
+    name="spawn_model" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false"
+    args="-file $(find urdfgenesyssw)/urdf/urdfgenesyssw.urdf -urdf -param robot_description -x 0 -y 0 -z 1 -model urdfgenesyssw"/>
+
+	<!-- Load joint controller configurations from YAML file to parameter server -->
+	<rosparam command="load" file="$(find urdfgenesyssw)/config/joints.yaml" /> 
+	<!-- Controllers -->
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" 
+args="joint_state_controller
+BLLFT_controller
+LFTLFC_controller
+BLLHT_controller
+LHTLHC_controller
+BLRFT_controller
+RFTRFC_controller
+BLRHT_controller
+RHTRHC_controller
+--timeout 50 "> </node>
+
+	  <!-- convert joint states to TF transforms for rviz, etc
+	  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+		respawn="false" output="screen"> </node>
+	    <remap from="/joint_states" to="/urdfgenesyssw/joint_states" /> -->
+
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+</launch>

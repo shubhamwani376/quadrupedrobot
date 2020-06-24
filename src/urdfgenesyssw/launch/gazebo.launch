@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+  <include  file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <!--<node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />-->
+	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find urdfgenesyssw)/urdf/urdfgenesyssw.xacro'"  />
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-param robot_description -urdf -x 0 -y 0 -z 0.28 -model urdfgenesyssw "
+	respawn="false"
+    output="screen" />
+	<rosparam command="load" file="$(find urdfgenesyssw)/config/joints.yaml" />
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"  
+args="joint_state_controller
+BLLFT_controller
+LFTLFC_controller
+BLLHT_controller
+LHTLHC_controller
+BLRFT_controller
+RFTRFC_controller
+BLRHT_controller
+RHTRHC_controller
+--timeout 30 " />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"	respawn="false" output="screen" />
+	<!-- rqt -->
+	<node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" />
+	<node name="rqt_publisher" pkg="rqt_publisher" type="rqt_publisher" /> 
+</launch>
