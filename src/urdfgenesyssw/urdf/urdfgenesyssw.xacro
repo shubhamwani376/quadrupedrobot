@@ -5,11 +5,12 @@
 <robot
   name="urdfgenesyssw" xmlns:xacro="http://www.ros.org/wiki/xacro">
 <xacro:include filename="$(find urdfgenesyssw)/urdf/urdfgenesyssw.gazebo" />
+
   <link
     name="BL">
     <inertial>
       <origin
-        xyz="0 0 0.27"
+        xyz="0 0 0"
         rpy="0 0 0" />
       <mass
         value="1.3732" />
@@ -45,6 +46,7 @@
       </geometry>
     </collision>
   </link>
+
   <link
     name="LFT">
     <inertial>
@@ -85,6 +87,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="BLLFT"
     type="revolute">
@@ -100,8 +103,8 @@
     <limit
       lower="-0.7854"
       upper="0.7854"
-      effort="0"
-      velocity="0" />
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="LFC">
@@ -158,8 +161,8 @@
     <limit
       lower="-0.7854"
       upper="0.7854"
-      effort="0"
-      velocity="0" />
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="LHT">
@@ -216,8 +219,8 @@
     <limit
       lower="-0.7854"
       upper="0.7854"
-      effort="0"
-      velocity="0" />
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="LHC">
@@ -274,8 +277,8 @@
     <limit
       lower="-0.7854"
       upper="0.7854"
-      effort="0"
-      velocity="0" />
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="RFT">
@@ -332,8 +335,8 @@
     <limit
       lower="-0.7854"
       upper="0.7854"
-      effort="0"
-      velocity="0" />
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="RFC">
@@ -390,8 +393,8 @@
     <limit
       lower="-0.7854"
       upper="0.7854"
-      effort="0"
-      velocity="0" />
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="RHT">
@@ -448,8 +451,8 @@
     <limit
       lower="-0.7854"
       upper="0.7854"
-      effort="0"
-      velocity="0" />
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="RHC">
@@ -506,8 +509,8 @@
     <limit
       lower="-0.7854"
       upper="0.7854"
-      effort="0"
-      velocity="0" />
+      effort="100"
+      velocity="100" />
   </joint>
   <transmission name="BLLFT_trans">
     <type>transmission_interface/SimpleTransmission</type>
@@ -515,7 +518,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="BLLFT_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -526,7 +529,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="LFTLFC_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -537,7 +540,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="BLLHT_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -548,7 +551,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="LHTLHC_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -559,7 +562,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="BLRFT_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
       <mechanicalReduction> 1 </mechanicalReduction>
     </actuator>
   </transmission>
@@ -570,7 +573,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="RFTRFC_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
       <mechanicalReduction> 1 </mechanicalReduction>
     </actuator>
   </transmission>
@@ -581,7 +584,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="BLRHT_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
       <mechanicalReduction> 1 </mechanicalReduction>
     </actuator>
   </transmission>
@@ -592,8 +595,9 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="RHTRHC_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+
       <mechanicalReduction> 1 </mechanicalReduction>
     </actuator>
   </transmission>
+
 </robot>
